@@ -8,7 +8,7 @@ const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
 let minutes = Number(minutesDisplay.textContent)
 
-export const elements = {
+export {
   buttonPlay,
   buttonPause,
   buttonStop,

@@ -1,8 +1,7 @@
 import Controls from "./controls.js"
 import Timer from "./timer.js"
-import { elements } from "./elements.js"
-
-const {
+import Sound from "./sounds.js"
+import {
   buttonPlay,
   buttonPause,
   buttonStop,
@@ -12,8 +11,8 @@ const {
   minutesDisplay,
   secondsDisplay,
   minutes
-} = elements
-
+} from "./elements.js"
+  
 const controls = Controls({
   buttonPlay,
   buttonPause,
@@ -28,32 +27,39 @@ const timer = Timer({
   minutes
 })
 
+const sound = Sound()
+
 //EVENT-DRIVEN
 //PROGRAMAÇÃO IMPERATIVA
 //CALLBACK
 buttonPlay.addEventListener('click', function () {
   controls.play()
   timer.countdown()
+  sound.pressButton()
 })
 
 buttonPause.addEventListener('click', function () {
   controls.pause()
   timer.hold()
+  sound.pressButton()
 })
 
 buttonStop.addEventListener('click', function() {
   controls.reset()
   timer.reset()
+  sound.pressButton()
 })
 
 buttonSoundOn.addEventListener('click', function() {
   buttonSoundOn.classList.add('hide')
   buttonSoundOff.classList.remove('hide')
+  sound.bgAudio.play()
 })
 
 buttonSoundOff.addEventListener('click', function() {
   buttonSoundOff.classList.add('hide')
   buttonSoundOn.classList.remove('hide')
+  sound.bgAudio.pause()
 })
 
 buttonSet.addEventListener('click', function() {
